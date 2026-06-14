@@ -96,7 +96,7 @@ A correlation matrix calculated on numerical variables (`BMI`, `PhysicalHealth`,
 To prepare the data for distance-based (KNN) and boundary-based (SVM) classifiers, a robust preprocessing pipeline was implemented:
 
 1.  **Defensive Missing Value Audit:** Checked for missing data. In case of future missing splits, a pipeline-fallback imputes numerical columns with their *median* (outlier-robust) and categorical columns with their *mode*.
-2.  **Target Encoding:** Mapped `HeartDisease` binary values: `Yes` $\rightarrow$ `1`, `No` $\rightarrow$ `0`.
+2.  **Target Encoding:** Mapped `HeartDisease` binary values: `Yes` -> `1`, `No` -> `0`.
 3.  **One-Hot Encoding (OHE):** Applied to nominal categorical attributes (`AgeCategory`, `Race`, `Diabetic`, `GenHealth`, `Sex`, etc.). To prevent multicollinearity and dodge the **dummy variable trap**, we dropped the first category (`drop_first=True`).
 4.  **Stratified Train/Test Split:** Split the dataset into **80% Training** (255,836 samples) and **20% Testing** (63,959 samples). Using `stratify=y` guarantees that the 8.56% heart disease ratio is perfectly preserved in both subsets.
 5.  **Feature Scaling (StandardScaler):** 
@@ -133,7 +133,7 @@ We trained and evaluated **10 different model configurations**. To combat class 
 The K-Nearest Neighbors classifier at K=11 achieved the highest accuracy (**91.20%**). However, it suffered from a critically low Recall (**10.03%**), meaning it missed roughly **90% of actual heart disease cases**. This occurs because the standard KNN algorithm minimizes global error, biasing its predictions toward the majority "No" class. In a healthcare environment, this model would be extremely dangerous.
 
 ### 2. SVM RBF Kernel Dynamics
-*   At **$C = 0.1$**, the SVM RBF model achieves the **highest Recall (80.33%)** among all models, classifying the maximum number of true positives.
+*   At **C = 0.1**, the SVM RBF model achieves the **highest Recall (80.33%)** among all models, classifying the maximum number of true positives.
 *   As the regularization parameter **C increases** (C -> 1.0 -> 10.0), the margin narrows and penalizes training errors more heavily. This shifts the model to prioritize precision over recall, causing Recall to drop from **80.33%** to **45.83%**, while accuracy rises to **80.25%**.
 
 ### 3. KNN Bias-Variance Trade-off
