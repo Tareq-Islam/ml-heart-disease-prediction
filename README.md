@@ -114,15 +114,15 @@ We trained and evaluated **10 different model configurations**. To combat class 
 
 | Model | Hyperparameters | Test Accuracy | Precision | Recall (Sensitivity) | F1-score |
 | :--- | :--- | :---: | :---: | :---: | :---: |
-| **SVM (Linear)** | $C = 0.1$, class_weight='balanced' | 74.19% | 21.89% | 78.45% | 0.3423 |
-| **SVM (Linear)** | $C = 1.0$, class_weight='balanced' | 74.16% | 21.87% | 78.50% | 0.3421 |
-| **SVM (Linear)** | $C = 10.0$, class_weight='balanced' | 74.17% | 21.88% | 78.48% | 0.3422 |
-| **SVM (RBF)** | $C = 0.1$, class_weight='balanced' | 72.05% | 20.75% | **80.33%** | 0.3298 |
-| **SVM (RBF)** | $C = 1.0$, class_weight='balanced' | 76.67% | 22.26% | 69.21% | **0.3368** |
-| **SVM (RBF)** | $C = 10.0$, class_weight='balanced' | 80.25% | 20.61% | 45.83% | 0.2843 |
-| **KNN** | $K = 3$, uniform weights | 89.71% | 31.61% | 17.41% | 0.2245 |
-| **KNN** | $K = 5$, uniform weights | 90.55% | 36.37% | 13.92% | 0.2013 |
-| **KNN** | $K = 11$, uniform weights | **91.20%** | **43.81%** | 10.03% | 0.1632 |
+| **SVM (Linear)** | C = 0.1, class_weight='balanced' | 74.19% | 21.89% | 78.45% | 0.3423 |
+| **SVM (Linear)** | C = 1.0, class_weight='balanced' | 74.16% | 21.87% | 78.50% | 0.3421 |
+| **SVM (Linear)** | C = 10.0, class_weight='balanced' | 74.17% | 21.88% | 78.48% | 0.3422 |
+| **SVM (RBF)** | C = 0.1, class_weight='balanced' | 72.05% | 20.75% | **80.33%** | 0.3298 |
+| **SVM (RBF)** | C = 1.0, class_weight='balanced' | 76.67% | 22.26% | 69.21% | **0.3368** |
+| **SVM (RBF)** | C = 10.0, class_weight='balanced' | 80.25% | 20.61% | 45.83% | 0.2843 |
+| **KNN** | K = 3, uniform weights | 89.71% | 31.61% | 17.41% | 0.2245 |
+| **KNN** | K = 5, uniform weights | 90.55% | 36.37% | 13.92% | 0.2013 |
+| **KNN** | K = 11, uniform weights | **91.20%** | **43.81%** | 10.03% | 0.1632 |
 | **Gaussian NB** | Default ($var\_smoothing = 10^{-9}$) | 73.09% | 20.46% | 74.23% | 0.3208 |
 
 ---
