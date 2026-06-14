@@ -123,22 +123,22 @@ We trained and evaluated **10 different model configurations**. To combat class 
 | **KNN** | K = 3, uniform weights | 89.71% | 31.61% | 17.41% | 0.2245 |
 | **KNN** | K = 5, uniform weights | 90.55% | 36.37% | 13.92% | 0.2013 |
 | **KNN** | K = 11, uniform weights | **91.20%** | **43.81%** | 10.03% | 0.1632 |
-| **Gaussian NB** | Default ($var\_smoothing = 10^{-9}$) | 73.09% | 20.46% | 74.23% | 0.3208 |
+| **Gaussian NB** | Default (smoothing = 10^-9) | 73.09% | 20.46% | 74.23% | 0.3208 |
 
 ---
 
 ## 📈 Key Findings & Performance Analysis
 
 ### 1. The Accuracy Paradox
-The K-Nearest Neighbors classifier at $K=11$ achieved the highest accuracy (**91.20%**). However, it suffered from a critically low Recall (**10.03%**), meaning it missed roughly **90% of actual heart disease cases**. This occurs because the standard KNN algorithm minimizes global error, biasing its predictions toward the majority "No" class. In a healthcare environment, this model would be extremely dangerous.
+The K-Nearest Neighbors classifier at K=11 achieved the highest accuracy (**91.20%**). However, it suffered from a critically low Recall (**10.03%**), meaning it missed roughly **90% of actual heart disease cases**. This occurs because the standard KNN algorithm minimizes global error, biasing its predictions toward the majority "No" class. In a healthcare environment, this model would be extremely dangerous.
 
 ### 2. SVM RBF Kernel Dynamics
 *   At **$C = 0.1$**, the SVM RBF model achieves the **highest Recall (80.33%)** among all models, classifying the maximum number of true positives.
-*   As the regularization parameter **$C$ increases** ($C \rightarrow 1.0 \rightarrow 10.0$), the margin narrows and penalizes training errors more heavily. This shifts the model to prioritize precision over recall, causing Recall to drop from **80.33%** to **45.83%**, while accuracy rises to **80.25%**.
+*   As the regularization parameter **C increases** (C -> 1.0 -> 10.0), the margin narrows and penalizes training errors more heavily. This shifts the model to prioritize precision over recall, causing Recall to drop from **80.33%** to **45.83%**, while accuracy rises to **80.25%**.
 
 ### 3. KNN Bias-Variance Trade-off
-As $K$ increases from 3 to 11:
-*   The model boundary becomes smoother, reducing variance and increasing overall generalization accuracy (89.71% $\rightarrow$ 91.20%).
+As K increases from 3 to 11:
+*   The model boundary becomes smoother, reducing variance and increasing overall generalization accuracy (89.71% -> 91.20%).
 *   However, because there is no minority oversampling or class-weighting applied, the minority class is increasingly drowned out in larger neighbor spheres, causing Recall to drop from 17.41% to 10.03%.
 
 ![KNN Bias Variance](knn_bias_variance.png)
@@ -156,7 +156,7 @@ Below are the consolidated comparisons showing how accuracy, precision, recall, 
 
 In clinical screening contexts, **False Negatives (missed diagnoses)** are significantly more dangerous than **False Positives (unnecessary follow-ups)**. A patient sent home with undetected heart disease faces severe risk, whereas a false positive is easily corrected via secondary, more precise diagnostic tests (e.g., ECGs, angiograms).
 
-*   **Primary Recommendation for Screenings:** **SVM RBF with $C=0.1$ (Balanced)**. It flags **80.33%** of all positive cases (highest sensitivity), ensuring minimal missed diagnoses.
+*   **Primary Recommendation for Screenings:** **SVM RBF with C=0.1 (Balanced)**. It flags **80.33%** of all positive cases (highest sensitivity), ensuring minimal missed diagnoses.
 *   **Alternative for Low-Resource Environments:** **Gaussian Naive Bayes**. It achieves a solid **74.23%** Recall, requires no features scaling, and processes the massive dataset in milliseconds compared to the high computational memory footprint of SVM RBF.
 
 ---
